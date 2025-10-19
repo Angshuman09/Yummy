@@ -1,12 +1,17 @@
-import { Button } from "./ui/button"
+import { Pizza } from "lucide-react"
 function Header() {
   return (
-    <div className="mx-auto container py-3">
-        <div className="flex justify-between">
-            <div className="text-3xl font-bold ">Yummy</div>
-            <Button className="bg-amber-300 hover:bg-amber-400 rounded-2xl" size='lg'>Login</Button>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Pizza className="w-8 h-8 text-amber-500" />
+            <span className="text-2xl font-bold text-gray-800">Yummy</span>
+          </div>
+          <button className="px-6 py-2 bg-amber-500 text-white rounded-full font-medium hover:bg-amber-600 transition-all duration-300 shadow-md hover:shadow-lg">
+            Login
+          </button>
         </div>
-    </div>
+      </header>
   )
 }
 

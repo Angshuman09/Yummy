@@ -5,9 +5,9 @@ type Props ={
 
 function Layout({children}: Props) {
   return (
-    <div className="flex flex-col min-h-screen p-2">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 overflow-hidden">
         <Header/>
-        <div className="container mx-auto flex-1 py-10">{children}</div>
+        <div className="container mx-auto flex-1 py-10 bg-gradient-to-br from-orange-50 via-amber-50 to-red-50">{children}</div>
     </div>
   )
 }
