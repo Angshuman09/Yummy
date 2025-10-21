@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Search} from 'lucide-react';
+import { Heart, Rocket, Search, Sprout} from 'lucide-react';
 
 function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -97,7 +97,7 @@ function Home() {
           <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">🚀</span>
+                <span className="text-3xl"><Rocket className='text-amber-800'/></span>
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">Fast Delivery</h3>
               <p className="text-gray-600">Get your pizza delivered in 30 minutes or less</p>
@@ -105,7 +105,7 @@ function Home() {
 
             <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">🌿</span>
+                <span className="text-3xl"><Sprout className='text-amber-800'/></span>
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">Fresh Every Bite</h3>
               <p className="text-gray-600">Only premium ingredients, baked daily for that perfect taste.</p>
@@ -113,7 +113,7 @@ function Home() {
 
             <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">❤️</span>
+                <span className="text-3xl"><Heart className='text-amber-800'/></span>
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">Made with Love</h3>
               <p className="text-gray-600">Handcrafted pizzas baked to perfection, just for you.</p>
