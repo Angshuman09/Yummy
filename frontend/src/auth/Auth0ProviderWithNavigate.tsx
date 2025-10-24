@@ -24,7 +24,7 @@ function Auth0ProviderWithNavigate({children}:Props) {
     domain={domain}
     clientId={clientId}
     authorizationParams={
-        {redirect_url : redirectURL }
+        {redirect_uri : redirectURL }
     }
     onRedirectCallback={onRedirectCallback}
     >

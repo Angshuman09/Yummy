@@ -86,7 +86,7 @@ function Home() {
                 />
                 <button
                   type="submit"
-                  className="hidden sm:block px-8 py-5 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold hover:from-amber-400 hover:to-orange-400 transition-all duration-300 m-1 rounded-full shadow-lg"
+                  className="hidden sm:block px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold hover:from-amber-400 hover:to-orange-400 transition-all duration-300 m-1 rounded-full shadow-lg"
                 >
                   Search
                 </button>
