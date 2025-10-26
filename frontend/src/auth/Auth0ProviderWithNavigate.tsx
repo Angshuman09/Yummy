@@ -1,5 +1,5 @@
 import React from 'react'
-import { Auth0Provider, type AppState } from '@auth0/auth0-react';
+import { Auth0Provider} from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 type Props = {
     children: React.ReactNode;
@@ -33,7 +33,5 @@ function Auth0ProviderWithNavigate({children}:Props) {
   )
 
 }
-
-
 
 export default Auth0ProviderWithNavigate

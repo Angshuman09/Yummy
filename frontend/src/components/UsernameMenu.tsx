@@ -32,7 +32,7 @@ function UsernameMenu() {
           <Button
             variant="ghost"
             onClick={() => logout()}
-            className='w-full text-left bg-orange-400 hover:bg-orange-500' 
+            className='w-full text-left bg-orange-400 hover:bg-orange-500 border-none' 
           >
             Logout
           </Button>
