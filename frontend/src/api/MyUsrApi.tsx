@@ -27,14 +27,14 @@ export const useCreateMyUser = ()=>{
     };
 
     const {
-        mutateAsync: createMyUser,
+        mutateAsync: createMyUser, //renamed to createMyUser, this is the function you call in your component when you want to create a user
         isPending,
         isError,
         isSuccess
     } = useMutation({
-        mutationFn: createMyUserRequest,
+        mutationFn: createMyUserRequest, //the function that actually performs the API call (createMyUserRequest)
     });
-
+    
     return {
         createMyUser,
         isPending,

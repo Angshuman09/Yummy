@@ -1,10 +1,10 @@
 import { Request, Response } from "express"
 import { User } from "../models/User.model"
-export const createUser = async (req:Request, res:Response) => {
+export const createUser = async (req: Request, res: Response) => {
     try {
-        const {auth0Id} = req.body;
-        const existingUser = await User.findOne({auth0Id});
-        if(existingUser){
+        const { auth0Id } = req.body;
+        const existingUser = await User.findOne({ auth0Id });
+        if (existingUser) {
             return res.status(200).send();
         }
 
@@ -12,16 +12,38 @@ export const createUser = async (req:Request, res:Response) => {
         await user.save();
         res.status(201).json(user.toObject());
     } catch (error) {
-        console.log('error in creating user:',error);
-        res.status(500).json({message:"Internal server error while creating user"});
+        console.log('error in creating user:', error);
+        res.status(500).json({ message: "Internal server error while creating user" });
     }
 }
 
-export const getUser = async (req:Request, res:Response) => {
+// export const getUser = async (req: Request, res: Response) => {
+//     try {
+
+//     } catch (error) {
+//         console.log('error in getting user:', error);
+//         res.status(500).json({ message: "internal server error while getting user:", error });
+//     }
+// }
+
+export const updateCurrentUser = async (req: Request, res: Response) => {
     try {
-        
+        const { name, addressLine1, city, country } = req.body;
+        const user = await User.findById(req.userId)
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        user.name = name;
+        user.addressLine1 = addressLine1;
+        user.city = city;
+        user.country = country;
+
+        await user.save();
+        res.status(200).send(user);
     } catch (error) {
-        console.log('error in getting user:',error);
-        res.status(500).json({message:"internal server error while getting user:", error});
+        console.log('error in updating user:', error);
+        res.status(500).json({ message: "internal server error while updating user:", error });
     }
 }

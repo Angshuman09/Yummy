@@ -14,7 +14,7 @@ function UsernameMenu() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-center gap-2 cursor-pointer px-3 py-2 hover:bg-amber-100 rounded-md transition focus-visible:ring-0 focus-visible:outline-none">
+      <DropdownMenuTrigger className="flex items-center gap-2 cursor-pointer px-3 py-2 hover:bg-amber-200 rounded-md transition focus-visible:ring-0 focus-visible:outline-none">
         <CircleUserRound />
         {user?.given_name}
       </DropdownMenuTrigger>

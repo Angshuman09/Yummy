@@ -63,7 +63,7 @@ function Home() {
 
       <main className="relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-700 mb-6 leading-tight">
             Every Slice
             <span className="block text-amber-500 mt-2">Right On Time</span>
           </h1>
@@ -122,7 +122,7 @@ function Home() {
         </div>
       </main>
 
-      <footer className="relative z-10 bg-white/80 backdrop-blur-md border-t border-gray-200 mt-20">
+      <footer className="relative z-10 bg-amber-100/80 backdrop-blur-md border-t border-gray-200 mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col items-center gap-4">
             <div className="flex gap-6 text-sm">
