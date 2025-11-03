@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import {z} from "zod";
-import {zodResolver} from "@hookform/resolvers/zod";  
-
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "../../components/ui/form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {LoadingButton} from '@/components/LoadingButton'
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../../components/ui/form";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -28,20 +28,101 @@ type Props = {
 }
 
 const UserProfileForm = ({
-onSave, isLoading, currentUser, title = "User Profile", buttonText= "Submit",
-}: Props) =>{
+    onSave, isLoading, currentUser, title = "User Profile", buttonText = "Submit",
+}: Props) => {
     const form = useForm<UserFormData>({
         resolver: zodResolver(formSchema),
         defaultValues: currentUser
-})
+    })
 
-useEffect(()=>{
-    form.reset(currentUser);
-},[currentUser, form])
+    useEffect(() => {
+        form.reset(currentUser);
+    }, [currentUser, form])
 
-return (
-    <div>form</div>
-)
+    return (
+        <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSave)}>
+                <div>
+                    <h2>{title}</h2>
+                    <FormDescription>
+                        View and change profile information here
+                    </FormDescription>
+                </div>
+                <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Email</FormLabel>
+                            <FormControl>
+                                <Input {...field} disabled />
+                            </FormControl>
+                        </FormItem>
+                    )}
+                />
+
+                <FormField
+                control={form.control}
+                name="name"
+                render={({field})=>(
+                    <FormItem>
+                        <FormLabel>Name</FormLabel>
+                        <FormControl>
+                            <Input {...field} disabled />
+                        </FormControl>
+                    </FormItem>
+                )}
+                />
+
+                <div>
+                <FormField
+                control={form.control}
+                name="name"
+                render={({field})=>(
+                    <FormItem>
+                        <FormLabel>Adress Line 1</FormLabel>
+                        <FormControl>
+                            <Input {...field} />
+                        </FormControl>
+                    </FormItem>
+                )}
+                />
+                <FormField
+                control={form.control}
+                name="name"
+                render={({field})=>(
+                    <FormItem>
+                        <FormLabel>City</FormLabel>
+                        <FormControl>
+                            <Input {...field} />
+                        </FormControl>
+                    </FormItem>
+                )}
+                />
+                <FormField
+                control={form.control}
+                name="name"
+                render={({field})=>(
+                    <FormItem>
+                        <FormLabel>Country</FormLabel>
+                        <FormControl>
+                            <Input {...field} />
+                        </FormControl>
+                    </FormItem>
+                )}
+                />
+                </div>
+              {
+                isLoading ? (
+                    <LoadingButton/>
+                ) :
+                (
+                    <Button type="submit" className="bg-black text-white">{buttonText}</Button>
+                )
+              }  
+            </form>
+        </Form>
+    )
 }
 
 export default UserProfileForm;
