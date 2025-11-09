@@ -7,23 +7,23 @@ type createUserRequest = {
     email: string;
 }
 
-export const useCreateMyUser = ()=>{
-    const {getAccessTokenSilently} = useAuth0();
+export const useCreateMyUser = () => {
+    const { getAccessTokenSilently } = useAuth0();
 
-    const createMyUserRequest = async (user:createUserRequest)=>{
+    const createMyUserRequest = async (user: createUserRequest) => {
         const accessToken = await getAccessTokenSilently();
-        const response = await fetch(`${API_BASE_URL}/api/my/user`,{
-        method:'POST',
-        headers:{
-            Authorization : `Bearer ${accessToken}`,
-            'Content-Type':'application/json',
-        },
-        body: JSON.stringify(user),
-    });
+        const response = await fetch(`${API_BASE_URL}/api/my/user`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        });
 
-    if(!response.ok){
-        throw new Error("error in creating user");
-    }
+        if (!response.ok) {
+            throw new Error("error in creating user");
+        }
     };
 
     const {
@@ -34,7 +34,7 @@ export const useCreateMyUser = ()=>{
     } = useMutation({
         mutationFn: createMyUserRequest, //the function that actually performs the API call (createMyUserRequest)
     });
-    
+
     return {
         createMyUser,
         isPending,
@@ -42,3 +42,38 @@ export const useCreateMyUser = ()=>{
         isSuccess
     }
 };
+
+type updateUserRequest = {
+    name: string;
+    addressLine1: string;
+    city: string;
+    country: string;
+}
+
+export const useUpdateMyUser = () => {
+    const { getAccessTokenSilently } = useAuth0();
+    const updateMyUserRequest = async (formData: updateUserRequest) => {
+        const accessToken = await getAccessTokenSilently();
+
+        const response = await fetch(`${API_BASE_URL}/api/my/user`, { //getting error here can't figuring out where the exactly the error
+            method: 'PUT',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+
+        if (!response.ok) {
+            throw new Error("Failed to update user");
+        }
+
+        return response.json();
+    }
+
+    const { mutateAsync: updateUser, isPending, isError, isSuccess } = useMutation({
+        mutationFn: updateMyUserRequest
+    });
+
+    return {updateUser, isPending};
+}

@@ -18,16 +18,16 @@ import { User as UserIcon, Mail, MapPin, Globe } from "lucide-react";
 
 const formSchema = z.object({
     email: z.string().optional(),
-    name: z.string().min(1, "Name is required"),
-    addressLine1: z.string().min(1, "Address Line 1 is required"),
-    city: z.string().min(1, "City is required"),
-    country: z.string().min(1, "Country is required"),
+    name: z.string().min(1, "Name is required").trim(),
+    addressLine1: z.string().min(1, "Address Line 1 is required").trim(),
+    city: z.string().min(1, "City is required").trim(),
+    country: z.string().min(1, "Country is required").trim(),
 });
 
 export type UserFormData = z.infer<typeof formSchema>;
 
 type Props = {
-    currentUser: User;
+    // currentUser: User;
     onSave: (userProfileData: UserFormData) => void;
     isLoading: boolean;
     title?: string;
@@ -37,20 +37,25 @@ type Props = {
 const UserProfileForm = ({
     onSave,
     isLoading,
-    currentUser,
+    // currentUser,
     title = "User Profile",
     buttonText = "Submit",
 }: Props) => {
+    //  console.log("currentUser prop:", currentUser);
+    // console.log("currentUser type:", typeof currentUser);
+    // console.log("currentUser keys:", Object.keys(currentUser || {}));
     const form = useForm<UserFormData>({
         resolver: zodResolver(formSchema),
-        defaultValues: currentUser,
+        // defaultValues: currentUser,
     });
 
-    useEffect(() => {
-        form.reset(currentUser);
-    }, [currentUser, form]);
+    console.log("Form values:", form.getValues());
+console.log("Form errors:", form.formState.errors);
 
-    console.log(form.formState.errors)
+    // useEffect(() => {
+    //      console.log("Current user data:", currentUser);
+    //     form.reset(currentUser);
+    // }, [currentUser, form]);
 
     return (
         <div className="min-h-screen w-full flex justify-center items-center bg-gradient-to-br from-orange-50 via-amber-50 to-rose-50 p-4 sm:p-6 lg:p-8 mt-20">
@@ -159,7 +164,7 @@ const UserProfileForm = ({
                                                 <FormControl>
                                                     <Input
                                                         {...field}
-                                                        placeholder="New York"
+                                                        placeholder="Hyderabad"
                                                         className="bg-slate-50 hover:bg-white border-2 border-gray-200 rounded-xl h-12 px-4 focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition-all duration-200"
                                                     />
                                                 </FormControl>
@@ -180,7 +185,7 @@ const UserProfileForm = ({
                                                 <FormControl>
                                                     <Input
                                                         {...field}
-                                                        placeholder="United States"
+                                                        placeholder="India"
                                                         className="bg-slate-50 hover:bg-white border-2 border-gray-200 rounded-xl h-12 px-4 focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition-all duration-200"
                                                     />
                                                 </FormControl>

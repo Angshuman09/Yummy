@@ -1,4 +1,5 @@
 import { useCreateMyUser } from "@/api/MyUsrApi";
+import { Spinner } from "@/components/ui/spinner";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom";
@@ -28,7 +29,7 @@ function AuthCallbackPage() {
       hashUserCreation();
     }, [navigate, user, createMyUser])
     
-  return <div>Loading...</div>
+  return <div className="w-full h-screen bg-orange-200 flex justify-center items-center"><Spinner className="size-20 text-amber-700"/></div>
 }
 
 export default AuthCallbackPage

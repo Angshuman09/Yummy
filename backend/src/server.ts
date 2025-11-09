@@ -23,5 +23,5 @@ app.get('/health', (req:Request, res:Response)=>{
 
 app.listen(PORT, ()=>{
     db();
-    console.log("app is listening..");
+    console.log(`app is listening at the port: ${PORT}`);
 })
