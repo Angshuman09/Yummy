@@ -199,7 +199,7 @@ console.log("Form errors:", form.formState.errors);
                             {/* Submit button */}
                             <div className="pt-6">
                                 {isLoading ? (
-                                    <LoadingButton />
+                                    <LoadingButton/>
                                 ) : (
                                     <Button
                                         type="submit"

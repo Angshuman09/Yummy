@@ -29,7 +29,7 @@ function AuthCallbackPage() {
       hashUserCreation();
     }, [navigate, user, createMyUser])
     
-  return <div className="w-full h-screen bg-orange-200 flex justify-center items-center"><Spinner className="size-20 text-amber-700"/></div>
+  return <div className="w-full h-screen bg-orange-200 flex justify-center items-center opacity-100">Loading..<Spinner className="size-20 text-amber-700"/></div>
 }
 
 export default AuthCallbackPage

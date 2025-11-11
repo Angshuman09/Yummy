@@ -12,7 +12,7 @@ declare global{
   namespace Express{
     interface Request{
       userId: string,
-      authId: string,
+      auth0Id: string,
     }
   }
 }
@@ -33,18 +33,18 @@ export const jwtParse = async (req: Request, res: Response, next: NextFunction)=
 
     try {
       const decoded = jwt.decode(token as string) as jwt.JwtPayload;
-      const authId = decoded.sub;
+      const auth0Id = decoded.sub;
 
-      const user = await User.findOne({authId});
+      const user = await User.findOne({auth0Id});
 
       if(!user){
         return res.sendStatus(404);
       }
 
-      req.authId = authId as string; 
+      req.auth0Id = auth0Id as string; 
       req.userId = user._id.toString();
       next();
     } catch (error) {
-      res.sendStatus(401);
+      return res.sendStatus(401);
     }
 }
