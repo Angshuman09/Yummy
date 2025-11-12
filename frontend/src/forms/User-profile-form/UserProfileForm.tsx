@@ -27,7 +27,7 @@ const formSchema = z.object({
 export type UserFormData = z.infer<typeof formSchema>;
 
 type Props = {
-    // currentUser: User;
+    currentUser: User;
     onSave: (userProfileData: UserFormData) => void;
     isLoading: boolean;
     title?: string;
@@ -37,7 +37,7 @@ type Props = {
 const UserProfileForm = ({
     onSave,
     isLoading,
-    // currentUser,
+    currentUser,
     title = "User Profile",
     buttonText = "Submit",
 }: Props) => {
@@ -46,16 +46,16 @@ const UserProfileForm = ({
     // console.log("currentUser keys:", Object.keys(currentUser || {}));
     const form = useForm<UserFormData>({
         resolver: zodResolver(formSchema),
-        // defaultValues: currentUser,
+        defaultValues: currentUser,
     });
 
-    console.log("Form values:", form.getValues());
-console.log("Form errors:", form.formState.errors);
+//     console.log("Form values:", form.getValues());
+// console.log("Form errors:", form.formState.errors);
 
-    // useEffect(() => {
-    //      console.log("Current user data:", currentUser);
-    //     form.reset(currentUser);
-    // }, [currentUser, form]);
+    useEffect(() => {
+        //  console.log("Current user data:", currentUser);
+        form.reset(currentUser);
+    }, [currentUser, form]);
 
     return (
         <div className="min-h-screen w-full flex justify-center items-center bg-gradient-to-br from-orange-50 via-amber-50 to-rose-50 p-4 sm:p-6 lg:p-8 mt-20">
