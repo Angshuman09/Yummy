@@ -17,14 +17,6 @@ export const createUser = async (req: Request, res: Response) => {
     }
 }
 
-// export const getUser = async (req: Request, res: Response) => {
-//     try {
-
-//     } catch (error) {
-//         console.log('error in getting user:', error);
-//         res.status(500).json({ message: "internal server error while getting user:", error });
-//     }
-// }
 
 export const updateCurrentUser = async (req: Request, res: Response) => {
     try {

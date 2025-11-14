@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { db } from './lib/db';
 import MyUserRoutes from './routes/user.routes';
+import MyRestaurantRoutes from './routes/restaurant.routes'
 dotenv.config({
     path:'./src/.env'
 });
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use('/api/my/user', MyUserRoutes);
+app.use('/api/my/restaurant', MyRestaurantRoutes);
 
 app.get('/health', (req:Request, res:Response)=>{
     res.json({message: "respond send successfully!"});
