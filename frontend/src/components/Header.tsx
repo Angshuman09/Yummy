@@ -17,7 +17,7 @@ function Header() {
           (
             <span><UsernameMenu/></span>
           ):(
-            <button className="px-7 py-3 bg-amber-500 text-white rounded-2xl font-medium hover:bg-orange-400 transition-all duration-300 shadow-md hover:shadow-lg"
+            <button className="px-7 py-3 bg-amber-500 text-white rounded-2xl font-medium hover:bg-orange-400 transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
           onClick={async ()=> await loginWithRedirect()}     
           >
             Login

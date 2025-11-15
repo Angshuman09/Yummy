@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { Restaurant } from "../models/Restaurant.model";
 import mongoose from "mongoose";
-import cloudinary from "cloudinary";
+import cloudinary from "../lib/cloudinary";
 export const createRestaurant = async (req: Request, res: Response)=>{
     try {
         const existingRestaurant = await Restaurant.findOne({user: req.userId});
@@ -28,6 +28,6 @@ const uploadImage = async (file: Express.Multer.File)=>{
     const base64Image = Buffer.from(image.buffer).toString('base64');
     const dataURI = `data:${image.mimetype};base64,${base64Image}`;
 
-    const uploadResponse = await cloudinary.v2.uploader.upload(dataURI);
+    const uploadResponse = await cloudinary.uploader.upload(dataURI);
     return uploadResponse.url;
 }
