@@ -11,10 +11,10 @@ function AppRouter() {
   return (
     <Routes>
       <Route path='/' element={<Layout><Home /></Layout>} />
-      <Route path='/auth-callback' element={<AuthCallbackPage/>}/>
-      <Route element={<ProtectedRoute/>}>
-            <Route path='/user-profile' element={<Layout>< UserProfilePage /></Layout>} />
-            <Route path='/manage-restaurant' element={<Layout><ManageRestaurantPage/></Layout>}/>
+      <Route path='/auth-callback' element={<AuthCallbackPage />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path='/user-profile' element={<Layout>< UserProfilePage /></Layout>} />
+        <Route path='/manage-restaurant' element={<ManageRestaurantPage />} />
       </Route>
       <Route path='*' element={<Navigate to={'/'} />} />
     </Routes>
